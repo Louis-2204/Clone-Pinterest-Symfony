@@ -9,5 +9,7 @@
 		<p>{{ pin.description }}</p>
 	</article>
 
+	<a href="{{ path('app_pins_edit', {id: pin.id}) }}">Edit</a>
+	|
 	<a href="{{ path('app_home')}}">Go Back</a>
 {% endblock %}
