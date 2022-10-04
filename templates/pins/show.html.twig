@@ -11,5 +11,7 @@
 
 	<a href="{{ path('app_pins_edit', {id: pin.id}) }}">Edit</a>
 	|
+	<a href="{{ path('app_pins_delete', {id: pin.id}) }}" onclick="return confirm('Are you sure ?')">Delete</a>
+	|
 	<a href="{{ path('app_home')}}">Go Back</a>
 {% endblock %}
