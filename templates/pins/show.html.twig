@@ -3,13 +3,33 @@
 {% block title pin.title %}
 
 {% block body %}
-	<article>
-		<h1>{{ pin.title }}
-		</h1>
-		<p>{{ pin.description }}</p>
-	</article>
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			<article class="bg-white rounded shadow pin">
+				<div class="mw-100 overflow-hidden">
+					<a href="{{ path('app_pins_show', {id: pin.id}) }}">
+						<img src="{{ (pin.imageNAme ? vich_uploader_asset(pin) : asset ('images/placeholder.jpg' )) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100 rounded-top">
+					</a>
+				</div>
+				<h2 class="h4 ps-4 pt-3">
+					<a class="text-secondary text-decoration-none" href="{{ path('app_pins_show', {id: pin.id}) }}">{{ pin.title }}</a>
+				</h2>
+				<p class="text-muted ps-4 pb-3">
+					<small>Submitted
+						{{ pin.createdAt|ago }}
+						by [OWNER FULL NAME]</small>
+				</p>
+				<p class="ps-4 pb-3">
+					{{ pin.description }}
+				</p>
 
-	<a href="{{ path('app_pins_edit', {id: pin.id}) }}">Edit</a>
-	|
-	<a href="{{ path('app_pins_delete', {id: pin.id}) }}" onclick="return confirm('Are you sure ?')">Delete</a>
+				<div class="ps-4 pb-3">
+					<a href="{{ path('app_pins_edit', {id: pin.id}) }}" class="btn btn-light text-decoration-none">Edit</a>
+
+					<a href="{{ path('app_pins_delete', {id: pin.id}) }}" class="btn btn-light text-decoration-none" onclick="return confirm('Are you sure ?')">Delete</a>
+				</div>
+			</article>
+		</div>
+	</div>
+
 {% endblock %}
