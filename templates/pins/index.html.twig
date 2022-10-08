@@ -11,15 +11,14 @@
 				{% for pin in row %}
 					<div class="col-md-4">
 						<article class="bg-white rounded shadow pin">
-							<div class="mw-100 overflow-hidden">
+							<div class="mw-100 rounded-top overflow-hidden">
 								<a href="{{ path('app_pins_show', {id: pin.id}) }}">
-									<img src="{{ (pin.imageNAme ? vich_uploader_asset(pin) : asset ('images/placeholder.jpg' )) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100 rounded-top">
+									<img src="{{ (pin.imageNAme ? vich_uploader_asset(pin) : asset ('images/placeholder.jpg' )) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100">
 								</a>
 							</div>
 							<h2 class="h4 ps-4 pt-3">
 								<a class="text-secondary text-decoration-none" href="{{ path('app_pins_show', {id: pin.id}) }}">{{ pin.title }}</a>
 							</h2>
-							{#<p>{{ pin.description|u.truncate(10,'...', false) }}</p>#}
 							<p class="text-muted ps-4 pb-3">
 								<small>Submitted by [OWNER FULL NAME]</small>
 							</p>
