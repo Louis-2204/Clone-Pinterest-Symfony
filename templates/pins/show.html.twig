@@ -17,7 +17,8 @@
 				<p class="text-muted ps-4 pb-3">
 					<small>Submitted
 						{{ pin.createdAt|ago }}
-						by [OWNER FULL NAME]</small>
+						by
+						{{ pin.user.fullName }}</small>
 				</p>
 				<p class="ps-4 pb-3">
 					{{ pin.description }}
