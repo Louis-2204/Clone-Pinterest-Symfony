@@ -19,9 +19,10 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
-###> custom ###
+###> custom app ignores ###
 /public/upload/
-###< end custom ###
+###< end custom app ignores ###
+
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
