@@ -4,7 +4,7 @@
 
 {% block body %}
 	<div class="row">
-		<div class="col-md-6 mx-auto">
+		<div class="col-md-5 mx-auto">
 			<article class="bg-white rounded shadow pin">
 				<div class="mw-100 rounded-top overflow-hidden">
 					<img src="{{ (pin.imageNAme ? vich_uploader_asset(pin) : asset ('images/placeholder.jpg' )) | imagine_filter('squared_thumbnail_medium') }}" alt="{{ pin.title }}" class="w-100">
@@ -24,9 +24,9 @@
 					</p>
 
 					<div class="pt-3">
-						<a href="{{ path('app_pins_edit', {id: pin.id}) }}" class="btn btn-light text-decoration-none">Edit</a>
+						<a href="{{ path('app_pins_edit', {id: pin.id}) }}" class="me-3 px-4 btn btn-secondary text-decoration-none">Edit</a>
 
-						<a href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-pin-delete-form').submit();" class=" btn btn-light">Delete</a>
+						<a href="#" class=" btn btn-danger px-3 text-decoration-none" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-pin-delete-form').submit();">Delete</a>
 
 						<form id="js-pin-delete-form" action="{{ path('app_pins_delete', {id: pin.id}) }}" method="post" style="display: none;">
 							<input type="hidden" name="_csrf_token" value="{{ csrf_token('pin_deletion_' ~ pin.id) }}">
