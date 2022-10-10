@@ -16,6 +16,7 @@ class SecurityController extends AbstractController
     {
         if ($this->getUser()) {
             $this->addFlash('error', 'You are already logged in!');
+
             return $this->redirectToRoute('app_home');
         }
 
