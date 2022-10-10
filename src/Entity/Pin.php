@@ -29,7 +29,7 @@ class Pin
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=150)
      * @Assert\NotBlank(message="Title can't be blank.")
      * @Assert\Length(min=3)
      */
