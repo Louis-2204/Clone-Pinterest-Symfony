@@ -1,9 +1,12 @@
-{% extends 'base.html.twig' %}
+{% extends 'layouts/base.html.twig' %}
+
+{% block title 'Oops!' %}
 
 {% block body %}
 	<h1>Page not found</h1>
 
 	<p>
-		The requested page couldn't be located. Checkout for any URL misspelling or return to the homepage.
+		The requested page couldn't be located. Checkout for any URL misspelling or
+		<a href=" {{ path('app_home') }} ">return to the homepage.</a>
 	</p>
 {% endblock %}
