@@ -3,21 +3,40 @@
 {% block title'Register' %}
 
 {% block body %}
-	{% for flash_error in app.flashes('verify_email_error') %}
-		<div class="alert alert-error rounded mb-3" role="alert">{{ flash_error }}</div>
-	{% endfor %}
+	<div class="row">
+		<div class="col-md-6 mx-auto">
+			{% for flash_error in app.flashes('verify_email_error') %}
+				<div class="alert alert-error rounded mb-3" role="alert">{{ flash_error }}</div>
+			{% endfor %}
 
-	<h1>Register</h1>
+			<h1 class="my-5 text-center">Create an account</h1>
 
-	{{ form_start(registrationForm) }}
-	{{ form_row(registrationForm.firstName) }}
-	{{ form_row(registrationForm.lastName) }}
-	{{ form_row(registrationForm.email) }}
-	{{ form_row(registrationForm.plainPassword, {
+			{{ form_start(registrationForm) }}
+			<div class="mb-3 row">
+				<div class="col-md-6">
+					{{ form_row(registrationForm.firstName) }}
+				</div>
+				<div class="col-md-6">
+					{{ form_row(registrationForm.lastName) }}
+				</div>
+			</div>
+			<div class="mb-3">
+				{{ form_row(registrationForm.email) }}
+			</div>
+			<div class="mb-3">
+				{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-	{{ form_row(registrationForm.agreeTerms) }}
+			</div>
+			<div class="mb-3">
+				{{ form_row(registrationForm.agreeTerms) }}
+			</div>
 
-	<button type="submit" class="btn btn-primary btn-block col-12">Register</button>
-	{{ form_end(registrationForm) }}
+			<button type="submit" class="btn btn-primary btn-lg col-12">Register</button>
+			<p class="mt-5 text-center text-muted">Already registered?
+				<a href=" {{ path('app_login') }} ">Log in</a>
+			</p>
+			{{ form_end(registrationForm) }}
+		</div>
+	</div>
 {% endblock %}
