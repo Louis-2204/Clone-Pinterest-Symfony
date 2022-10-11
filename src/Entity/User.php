@@ -224,7 +224,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function gravatar(?int $size = 100)
     {
-        return sprintf('https://www.gravatar.com/avatar/%s/?s=%d', md5(strtolower(trim($this->getEmail()))),  $size);
+        return sprintf('https://www.gravatar.com/avatar/%s?s=%d', md5(strtolower(trim($this->getEmail()))),  $size);
     }
 
     public function isVerified(): bool
