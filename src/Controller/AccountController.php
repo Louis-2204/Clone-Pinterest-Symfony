@@ -12,10 +12,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
+/**
+ * @Route("/account")
+ */
 class AccountController extends AbstractController
 {
     /**
-     * @Route("/account", name="app_account", methods="GET")
+     * @Route("", name="app_account", methods="GET")
      */
     public function show(): Response
     {
@@ -25,7 +28,7 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/edit", name="app_account_edit", methods="GET|POST")
+     * @Route("/edit", name="app_account_edit", methods="GET|POST")
      */
     public function edit(Request $request, EntityManagerInterface $em): Response
     {
@@ -37,7 +40,7 @@ class AccountController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
 
-            $this->addFlash('success', 'Account updated successfully');
+            $this->addFlash('success', 'Account updated successfully!');
 
             return $this->redirectToRoute('app_account');
         }
@@ -49,12 +52,14 @@ class AccountController extends AbstractController
     }
 
     /**
-     * @Route("/account/change-password", name="app_account_change_password", methods="GET|POST")
+     * @Route("/change-password", name="app_account_change_password", methods="GET|POST")
      */
     public function changePassword(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $PasswordHasher): Response
     {
         $user = $this->getUser();
-        $form = $this->createForm(ChangePasswordFormType::class);
+        $form = $this->createForm(ChangePasswordFormType::class, null, [
+            'current_password_is_required' => true
+        ]);
 
         $form->handleRequest($request);
 
@@ -65,7 +70,7 @@ class AccountController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('success', 'Password updated successfully');
+            $this->addFlash('success', 'Password updated successfully!');
 
             return $this->redirectToRoute('app_account');
         }
