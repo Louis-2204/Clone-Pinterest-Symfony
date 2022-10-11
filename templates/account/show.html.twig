@@ -8,9 +8,15 @@
 			<h1 class="my-5">Profile</h1>
 			<img src="{{ app.user.gravatar() }}" class="rounded-circle shadow" alt="{{ app.user.fullName}}'s Avatar ">
 			<p class="lead mt-3">{{ app.user.email }}</p>
+
 			<h2>{{ app.user.fullName }}</h2>
+
 			<p>
-				<a href="">Edit Account</a>
+				<small>🕑 Account created on
+					{{ app.user.createdAt|date('Y/m/d') }}</small>
+			</p>
+			<p>
+				<a href="{{ path('app_account_edit') }}">Edit Account</a>
 				|
 				<a href="">Change password</a>
 			</p>

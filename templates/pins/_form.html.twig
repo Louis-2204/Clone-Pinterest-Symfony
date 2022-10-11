@@ -1,7 +1,13 @@
 {{form_start(form)}}
 
-{{form_widget(form)}}
+{{form_row(form.imageFile)}}
 
-<input type="submit" value="{{ SubmitButtonText ?? 'Create Pin' }}" class="btn btn-primary col-12 mt-5" formnovalidate>
+<div class="mb-3">
+	{{form_row(form.title)}}
+</div>
+
+{{form_row(form.description)}}
+
+<input type="submit" value="{{ SubmitButtonText ?? 'Create Pin' }}" class="mb-5 btn btn-primary col-12 mt-5" formnovalidate>
 
 {{form_end(form)}}
