@@ -6,7 +6,7 @@
 	<div class="row">
 		<div class="col-md-6 mx-auto text-center">
 			<h1 class="my-5">Profile</h1>
-			<img src="{{ app.user.gravatar() }}" class="rounded-circle shadow" alt="{{ app.user.fullName}}'s Avatar ">
+			<img src="{{ app.user.gravatarUrl }}" class="rounded-circle shadow" alt="{{ app.user.fullName}}'s Avatar ">
 			<p class="lead mt-3">{{ app.user.email }}</p>
 
 			<h2>{{ app.user.fullName }}</h2>
