@@ -7,7 +7,11 @@
 		<div class="col-md-6 mx-auto text-center">
 			<h1 class="my-5">Profile</h1>
 			<img src="{{ app.user.gravatarUrl }}" class="rounded-circle shadow" alt="{{ app.user.fullName}}'s Avatar ">
-			<p class="lead mt-3">{{ app.user.email }}</p>
+			<p class="lead mt-3">{{ app.user.email }}
+				{% if app.user.isVerified == false %}
+					<small class="nav-link bg-danger text-white">Your email address is not verified!</small>
+				{% endif %}
+			</p>
 
 			<h2>{{ app.user.fullName }}</h2>
 
