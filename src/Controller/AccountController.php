@@ -2,18 +2,20 @@
 
 namespace App\Controller;
 
-use App\Form\ChangePasswordFormType;
 use App\Form\UserFormType;
 use Doctrine\ORM\EntityManager;
+use App\Form\ChangePasswordFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 /**
  * @Route("/account")
+ * @IsGranted("ROLE_USER")
  */
 class AccountController extends AbstractController
 {
@@ -33,6 +35,7 @@ class AccountController extends AbstractController
     public function edit(Request $request, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
+
         $form = $this->createForm(UserFormType::class, $user);
 
         $form->handleRequest($request);
@@ -57,6 +60,7 @@ class AccountController extends AbstractController
     public function changePassword(Request $request, EntityManagerInterface $em, UserPasswordHasherInterface $PasswordHasher): Response
     {
         $user = $this->getUser();
+
         $form = $this->createForm(ChangePasswordFormType::class, null, [
             'current_password_is_required' => true
         ]);
