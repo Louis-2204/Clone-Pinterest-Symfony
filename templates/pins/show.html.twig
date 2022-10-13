@@ -22,7 +22,7 @@
 					<p class="pt-3 text-break">
 						{{ pin.description }}
 					</p>
-					{% if app.user == pin.user or is_granted('ROLE_ADMIN') %}
+					{% if is_granted('PIN_MANAGE', pin) or is_granted('ROLE_ADMIN') %}
 						<div class="pt-3">
 							<a href="{{ path('app_pins_edit', {id: pin.id}) }}" class="me-3 px-4 btn btn-secondary text-decoration-none">Edit</a>
 
