@@ -36,3 +36,7 @@
 		</div>
 	</div>
 </nav>
+
+{% if is_granted('ROLE_ADMIN') %}
+	<h1 class="text-center text-danger">Administrator</h1>
+{% endif %}

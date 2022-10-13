@@ -5,8 +5,6 @@ namespace App\Security\Voter;
 use function PHPUnit\Framework\returnSelf;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Authorization\Voter\Voter;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 
 class PinVoter extends Voter
@@ -30,9 +28,10 @@ class PinVoter extends Voter
         // ... (check conditions and return true to grant permission) ...
         switch ($attribute) {
             case self::PIN_MANAGE:
-                return $user->isVerified() && $user == $subject->getUser() || $user->getRoles() == ["ROLE_ADMIN", "ROLE_USER"];
+                return $user->isVerified() && $user == $subject->getUser() || in_array("ROLE_ADMIN", $user->getRoles());
         }
 
         return false;
     }
 }
+// $user->getRoles() == ["ROLE_ADMIN", "ROLE_USER"];
