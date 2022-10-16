@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-sm navbar-light bg-light mb-4" aria-label="Third navbar example">
+<nav class="navbar navbar-expand-sm navbar-light bg-light" aria-label="Third navbar example">
 	<div class="container">
-		<a class="navbar-brand" href=" {{ path('app_home') }} ">Clone Pinterest</a>
+		<a class="navbar-brand" href="{{ path('app_home') }}">Clone Pinterest</a>
 		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		</button>
@@ -38,5 +38,15 @@
 </nav>
 
 {% if is_granted('ROLE_ADMIN') %}
-	<h1 class="text-center text-danger">Administrator</h1>
+	<h1 class="mt-2 text-center text-danger">Administrator</h1>
+{% endif %}
+
+{% if is_granted('IS_IMPERSONATOR') %}
+	<div class="alert alert-danger text-danger">
+		<h7>You are impersonnating
+			{{ app.user.email }}.
+
+			<a href="{{ impersonation_exit_path(path('app_home') ) }}">Exit impersonation</a>
+		</h7>
+	</div>
 {% endif %}

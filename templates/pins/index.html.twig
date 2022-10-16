@@ -4,7 +4,7 @@
 
 {% block body %}
 	{% if pins|length > 0 %}
-		<h1 class="mb-4 text-center text-muted">{{ pluralize(pins|length, 'Pin') }}</h1>
+		<h1 class="my-4 text-center text-muted">{{ pluralize(pins|length, 'Pin') }}</h1>
 
 		{% for row in pins|batch(3) %}
 			<div class="row mb-5">
